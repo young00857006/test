@@ -62,7 +62,7 @@ public class RobotController {
 			mac.init(key);
 			byte[] source = requestBody.getBytes("UTF-8");
 			String signature = Base64.encodeBase64String(mac.doFinal(source));
-			if (signature.equals(X_Line_Signature)) {
+			if (signature.equals(x-line-signature)) {
 				return true;
 			}
 		} catch (NoSuchAlgorithmException | InvalidKeyException | UnsupportedEncodingException e) {
