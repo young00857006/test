@@ -17,7 +17,7 @@ import line.robot.message_object.http.LineConnector;
 @Component
 public class MessageHandler {
 	
-	@Value("${line.user.channel.token}")
+	@Value("aGLSAm6glSjuEZejBncJkwh1C2YAQCivBnHkwtq+JDh1pgEeYP/fnuk/L44zWMZAs7XpceyBlpzopMEIywUJA3Q1tEnkXOOzk4gr/Ncxffs4NP/K91qvi1vSEHga+Lt2L4P9kmx3ICRE0FNt6Tm94gdB04t89/1O/w1cDnyilFU=")
 	private String LINE_TOKEN;
 	public void doAction(JSONObject event) {
 		doAction(this.messageListener, event);
