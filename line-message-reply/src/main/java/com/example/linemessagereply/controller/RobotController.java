@@ -27,7 +27,7 @@ import com.example.linemessagereply.handler.MessageHandler;
 @RequestMapping("/robot")
 @RestController
 public class RobotController {
-	@Value("${line.user.secret}")
+	@Value("722ec8c5cc39f700a5f3690df0a5741a")
 	private String LINE_SECRET;
 	@Autowired
 	private MessageHandler messageHandler;
