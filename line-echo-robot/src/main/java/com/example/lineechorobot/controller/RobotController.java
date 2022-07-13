@@ -27,7 +27,7 @@ import com.example.lineechorobot.handler.MessageHandler;
 @RestController
 public class RobotController {
 
-	@Value("${line.user.secret}")
+// 	@Value("${line.user.secret}")
 	private String LINE_SECRET = "722ec8c5cc39f700a5f3690df0a5741a";
 	
 	@Autowired
@@ -38,9 +38,9 @@ public class RobotController {
 	}
 
 	@PostMapping("/messaging")
-	public ResponseEntity messagingAPI(@RequestHeader("x-line-signature") String X_Line_Signature,
+	public ResponseEntity messagingAPI(@RequestHeader("x-line-signature") String x-line-signature,
 			@RequestBody String requestBody) throws UnsupportedEncodingException, IOException {
-		if (checkFromLine(requestBody, X_Line_Signature)) {
+		if (checkFromLine(requestBody, x-line-signature)) {
 			System.out.println("驗證通過");
 			JSONObject object = new JSONObject(requestBody);
 			for (int i = 0; i < object.getJSONArray("events").length(); i++) {
@@ -54,7 +54,7 @@ public class RobotController {
 		return new ResponseEntity<String>("Not line platform", HttpStatus.BAD_GATEWAY);
 	}
 
-	public boolean checkFromLine(String requestBody, String X_Line_Signature) {
+	public boolean checkFromLine(String requestBody, String x-line-signature) {
 		SecretKeySpec key = new SecretKeySpec(LINE_SECRET.getBytes(), "HmacSHA256");
 		Mac mac;
 		try {
