@@ -28,7 +28,7 @@ import com.example.lineechorobot.handler.MessageHandler;
 public class RobotController {
 
 	@Value("${line.user.secret}")
-	private String LINE_SECRET ;
+	private String LINE_SECRET = "722ec8c5cc39f700a5f3690df0a5741a";
 	
 	@Autowired
 	private MessageHandler messageHandler;
