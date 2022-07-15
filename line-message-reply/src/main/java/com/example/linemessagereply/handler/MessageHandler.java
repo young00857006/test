@@ -60,7 +60,7 @@ public class MessageHandler {
 		public void text(String replyToken, String text) {
 			// TODO Auto-generated method stub
 			System.out.printf("%s\t%s\n", replyToken, "text");
-			LineConnector.getInstance().replyMessage(LINE_TOKEN, new ReplyMessage(replyToken, new BaseMessage[] {new TextMessage("看不懂~請在跟我說一次"), new StickerMessage("11538", "51626532")}));
+			LineConnector.getInstance().replyMessage(LINE_TOKEN, new ReplyMessage(replyToken, new BaseMessage[] {new TextMessage(text), new StickerMessage("11538", "51626532")}));
 		}
 		
 		@Override
