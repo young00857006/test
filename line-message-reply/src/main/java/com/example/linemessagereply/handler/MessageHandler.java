@@ -1,6 +1,8 @@
 package com.example.linemessagereply.handler;
 
 import com.example.linemessagereply.database.WaterQualityDB;
+import com.mongodb.client.*;
+import org.bson.Document;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -62,11 +64,19 @@ public class MessageHandler {
 		public void text(String replyToken, String text) {
 			// TODO Auto-generated method stub
 			System.out.printf("%s\t%s\n", replyToken, "text");
-			String message = "";
+			String message = "gg";
+			String url = "mongodb+srv://ntouiot:ntouiot@cluster0.i4m8j74.mongodb.net/?retryWrites=true&w=majority";
+
 			if(text.contains("水質")){
-				WaterQualityDB waterQualityDB = new WaterQualityDB();
-				for (String i : waterQualityDB.getWaterquality()) {
-					message += i + "%n";
+				message = "";
+				MongoClient mongoClient = MongoClients.create(url);
+				MongoDatabase database = mongoClient.getDatabase("iot");
+				MongoCollection<Document> collection = database.getCollection("waterquality");
+				FindIterable<Document> findIterable = collection.find();
+				MongoCursor<Document> mongoCursor = findIterable.iterator();
+				while(mongoCursor.hasNext()){
+					JSONObject ob = new JSONObject(mongoCursor.next().toJson());
+					message += "日期："+ob.get("DATETIME")+"水質："+ob.get("TDSvalue") + "%n";
 				}
 			}
 			LineConnector.getInstance().replyMessage(LINE_TOKEN, new ReplyMessage(replyToken, new BaseMessage[] {new TextMessage(message)}));
