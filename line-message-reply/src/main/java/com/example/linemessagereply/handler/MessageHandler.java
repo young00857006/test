@@ -67,7 +67,7 @@ public class MessageHandler {
 			String message = "gg";
 			String url = "mongodb+srv://ntouiot:ntouiot@cluster0.i4m8j74.mongodb.net/?retryWrites=true&w=majority";
 
-			if(text.contains("水質")){
+// 			if(text.contains("水質")){
 				message = "";
 				MongoClient mongoClient = MongoClients.create(url);
 				MongoDatabase database = mongoClient.getDatabase("iot");
@@ -78,7 +78,7 @@ public class MessageHandler {
 					JSONObject ob = new JSONObject(mongoCursor.next().toJson());
 					message += "日期："+ob.get("DATETIME")+"水質："+ob.get("TDSvalue") + "%n";
 				}
-			}
+// 			}
 			LineConnector.getInstance().replyMessage(LINE_TOKEN, new ReplyMessage(replyToken, new BaseMessage[] {new TextMessage(message)}));
 		}
 		
