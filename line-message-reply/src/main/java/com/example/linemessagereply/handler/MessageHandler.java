@@ -84,7 +84,7 @@ public class MessageHandler {
 			}
 			*/
 			if(text.contains("水質")){
-				String message ="";
+				String message ="Hellow";
 				for(WaterQuality i :WaterQualityrepo.findAll()){
 					message += i.getNO() + i.getDATETIME() + i.getTDSvalue() + "\n";
 				}
