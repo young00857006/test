@@ -4,6 +4,7 @@ import com.example.linemessagereply.entity.Member;
 import com.example.linemessagereply.entity.WaterQuality;
 import com.example.linemessagereply.reppository.MemberRepository;
 import com.example.linemessagereply.reppository.WaterQualityRepository;
+import line.robot.message_object.api.PushMessage;
 import okhttp3.*;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
