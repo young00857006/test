@@ -136,7 +136,9 @@ public class MessageHandler {
 //				}
 //			}
 			/*test*/
-
+			else {
+				LineConnector.getInstance().pushMessage(LINE_TOKEN, new PushMessage("Udace952f75974d78654108058b606009", new BaseMessage[]{new TextMessage("nfjbk;a;av;ja")}));
+			}
 		}
 
 		@Override
