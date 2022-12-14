@@ -113,7 +113,13 @@ public class MessageHandler {
 				Sensor sensor = getApi.getSensor();
 				String message = "";
 				if(text.contains("水位")){
-					message += "水位："+sensor.getLevel();
+// 					message += "水位："+sensor.getLevel();
+					if(sensor.getLevel().contentEquals("1")){
+						message += "水位：正常";
+					}
+					else{
+						message += "請檢查水位！！";
+					}
 				}
 				else if(text.contains("水質")){
 					if(Float.parseFloat(sensor.getTds())>=500){
